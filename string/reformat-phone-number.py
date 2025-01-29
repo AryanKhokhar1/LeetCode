@@ -4,10 +4,7 @@ class Solution(object):
         :type number: str
         :rtype: str
         """
-        fnum = ''
-        for i in range(len(number)):
-            if(number[i] != '-' and number[i] != ' '):
-                fnum += number[i]
+        fnum = ''.join(a for a in number if a.isdigit())
         ansnum = ''
         i = 0
         while(len(fnum) != 0):
