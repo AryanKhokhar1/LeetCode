@@ -11,9 +11,7 @@ class Solution(object):
         :rtype: List[str]
         """
         words = s.split(" ")
-        biggest_word = 0
-        for letter in words:
-            biggest_word = max(biggest_word,len(letter))
+        biggest_word = max(len(word) for word in words)
         
         answer = list()
         for i in range(biggest_word):
@@ -24,7 +22,7 @@ class Solution(object):
                 else:
                     verticalword += " "
             
-            answer.append(verticalword.rstrip())
+            answer.append(self.rright(verticalword))
         return answer
 
 
