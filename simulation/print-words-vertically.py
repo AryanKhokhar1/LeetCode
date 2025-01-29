@@ -24,7 +24,7 @@ class Solution(object):
                 else:
                     verticalword += " "
             
-            answer.append(self.rright(verticalword))
+            answer.append(verticalword.rstrip())
         return answer
 
 
