@@ -17,6 +17,6 @@ class Solution(object):
         ans = 0
         for v in summ.values():
             if v > 1:
-                ans += (v//2)
+                ans += (v * (v-1))//2
         
         return 8*ans
