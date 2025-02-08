@@ -5,10 +5,9 @@ class NumberContainers(object):
 
     def change(self, index, number):
         self.dic[index] = number
-
         
     def find(self, number):
-        for k,v in self.dic.items():
+        for k,v in sorted(self.dic.items()):
             if v == number:
                 return k
         return -1
