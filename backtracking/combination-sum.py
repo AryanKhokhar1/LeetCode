@@ -1,20 +1,19 @@
 class Solution(object):
-    def combinationsumhelp(self,start,currentCandidates, candidates, target, answer):
+    def combinationsumhelp(self,start,currentCandidates, candidates, target):
         if(sum(currentCandidates)== target):
-            answer.append(currentCandidates[:])
-            # print(currentCandidates)
-            return
+            return [currentCandidates[:]]
+
+        result = []
         for i in range(start,len(candidates)):
             num = candidates[i]
             if(sum(currentCandidates)+num <= target):
                 currentCandidates.append(num)
 
-                self.combinationsumhelp(i,currentCandidates, candidates, target, answer)
+                result.extend(self.combinationsumhelp(i,currentCandidates, candidates, target))
 
                 currentCandidates.pop(-1)
+        return result
     def combinationSum(self, candidates, target):
-        answer = []
-        self.combinationsumhelp(0,[],candidates, target,answer)
-        return answer
         
+        return self.combinationsumhelp(0,[],candidates, target)        
         
