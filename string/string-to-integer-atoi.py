@@ -14,6 +14,8 @@ class Solution(object):
                 self.signature = '+'
             else:
                 self.signature = '+'
+        else:
+            self.signature = "+"
         return self.number(s,0,0)
     
     def number(self,s,num,i):
