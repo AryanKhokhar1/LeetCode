@@ -12,10 +12,13 @@ class ProductOfNumbers(object):
         
 
     def getProduct(self, k):
-        if k < len(self.lis):
+        if k <= len(self.lis):
             mult = 1
-            for i in range(len(self.lis)-1,len(self.lis)-k-1,-1):
+            i = -1
+            while( i >= ((-1)*k)):
                 mult *= self.lis[i]
+                i -= 1
+
             return mult
 
 
