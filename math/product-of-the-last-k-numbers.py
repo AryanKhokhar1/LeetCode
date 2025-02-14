@@ -21,6 +21,7 @@ class ProductOfNumbers(object):
         if len(self.prefixProduct) == k:
             return self.prefixProduct[-1]
         elif len(self.prefixProduct) > k:
+            l = len(self.prefixProduct)-1
             return self.prefixProduct[l]/self.prefixProduct[l-k]
         else:
             return 0
