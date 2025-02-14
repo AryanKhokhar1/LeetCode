@@ -22,15 +22,9 @@ class Solution(object):
         num = (10 *num) + int(s[i])
         return self.number(s,num,i+1)
     def checkInRange(self,num):
-        if(num < -2147483648 ):
-            return -2147483648 
-        elif(num > 2147483647):
-            return 2147483647
-        else:
-            if(self.signature == '-'):
-                return (-1) * num
-            else:
-                return num
+        if self.signature == '-':
+            num = -num
+        return max(-2147483648, min(2147483647, num))
     def myAtoi(self, s):
         """
         :type s: str
