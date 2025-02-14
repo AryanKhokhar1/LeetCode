@@ -1,25 +1,30 @@
 class ProductOfNumbers(object):
     
     def __init__(self):
-        self.lis  = list()
+        self.prefixProduct = []
 
     def add(self, num):
         """
         :type num: int
         :rtype: None
         """
-        self.lis.append(num)
+        if num == 0:
+            self.prefixProduct = list()
+        elif(len(self.prefixProduct) == 0):
+            self.prefixProduct.append(num)
+        else:
+            self.prefixProduct.append(num*self.prefixProduct[-1])
+
         
 
     def getProduct(self, k):
-        if k <= len(self.lis):
-            mult = 1
-            i = -1
-            while( i >= ((-1)*k)):
-                mult *= self.lis[i]
-                i -= 1
-
-            return mult
+        if len(self.prefixProduct) == k:
+            return self.prefixProduct[-1]
+        elif len(self.prefixProduct) > k:
+            l = len(self.prefixProduct)-1
+            return self.prefixProduct[l]/self.prefixProduct[l-k]
+        else:
+            return 0
 
 
 # Your ProductOfNumbers object will be instantiated and called as such:
