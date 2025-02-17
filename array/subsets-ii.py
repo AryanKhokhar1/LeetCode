@@ -1,7 +1,7 @@
 class Solution(object):
     def subsetsWithDup(self, nums):
         answer = []
-        
+        nums.sort()
         def backtrack(curr, i):
             if i == len(nums):
                 answer.append(curr[:])
