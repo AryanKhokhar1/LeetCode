@@ -14,11 +14,13 @@ class MyStack {
         if(empty()){
             return -1;
         }
-        for(int i = 1; i<this.queue1.size(); i++){
-            queue2.add(this.queue1.remove());
+        int q1s = this.queue1.size();
+        for(int i = 1; i<q1s; i++){
+            this.queue2.add(this.queue1.remove());
         }
         int val = this.queue1.remove();
-        queue1 = queue2;
+        this.queue1 = this.queue2;
+        // this.queue2.clear();
         return val;
     }
     
@@ -26,12 +28,14 @@ class MyStack {
         if(empty()){
             return -1;
         }
-        for(int i =1; i<this.queue1.size(); i++){
+        int q1s = this.queue1.size();
+        for(int i =1; i<q1s; i++){
             this.queue2.add(this.queue1.remove());
         }
         int val = this.queue1.remove();
         this.queue2.add(val);
         this.queue1 = this.queue2;
+        // this.queue2.clear();
         return val;
     }
     
