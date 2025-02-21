@@ -10,9 +10,13 @@ class MinStack(object):
 
     def pop(self):
         if len(self.stack) > 0:
-            self.stack.pop()
-
-            self.minimum = min(self.stack)
+            val = self.stack.pop()
+            
+            if val == self.minimum and len(self.stack) > 0:
+                self.minimum = min(self.stack)
+            if len(self.stack) == 0:
+                self.minimum = sys.maxint
+            
 
     def top(self):
         if len(self.stack) < 1:
