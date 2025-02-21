@@ -1,5 +1,4 @@
 class Solution(object):
-    score = []
     def invalid(self):
         if(len(self.score) > 0):
             self.score.pop(-1)
@@ -10,6 +9,7 @@ class Solution(object):
         if(len(self.score) >1):
             self.score.append(self.score[-1]+self.score[-2])
     def calPoints(self, operations):
+        self.score = []
         for op in operations:
             if op == "C":
                 self.invalid()
