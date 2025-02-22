@@ -7,7 +7,7 @@ class Solution(object):
                 nums[i] = 1
                 nums[i+1] = (0 if nums[i+1] == 1 else 1)
                 nums[i+2] = (0 if nums[i+2] == 1 else 1)
-        if nums[-2:] != [1,1]
+        if nums[-2:] != [1,1]:
             return -1
         else:
             return operation
