@@ -14,6 +14,6 @@ class Solution(object):
         self.diameter = max(self.diameter, (leftSum + rightSum + root.val))
         return root.val + max(leftSum , rightSum)
     def maxPathSum(self, root):
-        self.diameter = 0
+        self.diameter = -1000
         self.maxhelper(root,self.diameter)
         return self.diameter
