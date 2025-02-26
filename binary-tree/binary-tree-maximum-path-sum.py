@@ -20,7 +20,12 @@ class Solution(object):
             self.diameter = max(self.diameter, (root.val + leftSum))
         else:
             self.diameter = max(self.diameter, (root.val + leftSum + rightSum))
-        return root.val + max(leftSum , rightSum)
+        
+        if max(leftSum , rightSum) > 0:
+            return root.val + max(leftSum, rightSum)
+        else:
+            return root.val
+
     def maxPathSum(self, root):
         self.diameter = -1000
         self.maxhelper(root,self.diameter)
