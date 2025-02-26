@@ -5,28 +5,15 @@
 #         self.left = left
 #         self.right = right
 class Solution(object):
-    def maxhelper(self,root,diameter):
+    def maxhelper(self,root):
         if root is None:
             return 0
 
-        leftSum = self.maxhelper(root.left , diameter)
-        rightSum = self.maxhelper(root.right, diameter)
+        leftSum = max(self.maxhelper(root.left),0)
+        rightSum = max(self.maxhelper(root.right),0)
         self.diameter = max(self.diameter, (leftSum + rightSum + root.val))
-        if leftSum < 0 and rightSum < 0:
-            self.diameter = max(self.diameter, (root.val))
-        elif leftSum < 0:
-            self.diameter = max(self.diameter, (root.val + rightSum))
-        elif rightSum < 0:
-            self.diameter = max(self.diameter, (root.val + leftSum))
-        else:
-            self.diameter = max(self.diameter, (root.val + leftSum + rightSum))
-        
-        if max(leftSum , rightSum) > 0:
-            return root.val + max(leftSum, rightSum)
-        else:
-            return root.val
-
+        return root.val + max(leftSum , rightSum)
     def maxPathSum(self, root):
         self.diameter = -1000
-        self.maxhelper(root,self.diameter)
+        self.maxhelper(root)
         return self.diameter
