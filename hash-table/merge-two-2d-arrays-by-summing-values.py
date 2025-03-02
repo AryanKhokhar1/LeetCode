@@ -5,7 +5,7 @@ class Solution(object):
         nums = []
         while(i < len(nums1) and j < len(nums2)):
             if nums1[i][0] == nums2[j][0]:
-                nums.append([nums1[i][0],nums1[i][1]+nums2[i][1]])
+                nums.append([nums1[i][0],nums1[i][1]+nums2[j][1]])
                 i += 1
                 j += 1
             elif nums1[i][0] > nums2[j][0]:
