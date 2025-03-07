@@ -28,7 +28,7 @@ class Solution:
         for i in range(1, len(primes)):
             gap = primes[i] - primes[i-1]
             if gap <= 2:
-                return [primes[i], primes[i-1]]
+                return [primes[i-1], primes[i]]
             if gap < min_gap:
                 min_gap = gap
                 result = [primes[i-1], primes[i]]
