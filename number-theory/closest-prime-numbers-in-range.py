@@ -1,5 +1,5 @@
 class Solution:
-    def closestPrimes(self, left: int, right: int) -> list[int]:
+    def closestPrimes(self, left,right):
         def is_prime(n):
             if n <= 1:
                 return False
