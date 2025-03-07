@@ -1,36 +1,24 @@
-class Solution:
-    def closestPrimes(self, left,right):
-        def is_prime(n):
-            if n <= 1:
-                return False
-            if n <= 3:
-                return True
-            if n % 2 == 0 or n % 3 == 0:
-                return False
-            i = 5
-            while i * i <= n:
-                if n % i == 0 or n % (i + 2) == 0:
-                    return False
-                i += 6
-            return True
-        
-        primes = []
-        for num in range(max(2, left), right + 1):
-            if is_prime(num):
-                primes.append(num)
-        
-        if len(primes) < 2:
+class Solution(object):
+    def closestPrimes(self, left, right):
+        def sieve(max_num):
+            is_prime = [True] * (max_num + 1)
+            is_prime[0] = is_prime[1] = False
+            for i in range(2, int(max_num**0.5) + 1):
+                if is_prime[i]:
+                    for j in range(i * i, max_num + 1, i):
+                        is_prime[j] = False
+            return is_prime
+
+        is_prime = sieve(right)
+        primes_in_range = [i for i in range(left, right + 1) if is_prime[i]]
+
+        if len(primes_in_range) < 2:
             return [-1, -1]
-        
-        min_gap = float('inf')
-        result = [-1, -1]
-        
-        for i in range(1, len(primes)):
-            gap = primes[i] - primes[i-1]
-            if gap <= 2:
-                return [primes[i-1], primes[i]]
-            if gap < min_gap:
-                min_gap = gap
-                result = [primes[i-1], primes[i]]
-        
-        return result
+
+        closest_pair = [primes_in_range[0], primes_in_range[1]]
+        for i in range(1, len(primes_in_range) - 1):
+            if primes_in_range[i + 1] - primes_in_range[i] < closest_pair[1] - closest_pair[0]:
+                closest_pair = [primes_in_range[i], primes_in_range[i + 1]]
+
+        return closest_pair
+
