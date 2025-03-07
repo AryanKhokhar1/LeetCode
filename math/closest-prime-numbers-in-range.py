@@ -1,34 +1,34 @@
-class Solution(object):
-    def isPrime(self, num):
-        if num < 2:
-            return False
-        if num in (2, 3):
-            return True
-        if num % 2 == 0 or num % 3 == 0:
-            return False
-        for i in range(5, int(num**0.5) + 1, 2):
-            if num % i == 0:
+class Solution:
+    def closestPrimes(self, left: int, right: int) -> list[int]:
+        def is_prime(n):
+            if n <= 1:
                 return False
-        return True
-
-    def closestPrimes(self, left, right):
-        primeNumber = []
-        for num in range(left, right+1):
-            self.isPrime(num) and primeNumber.append(num)
-        if len(primeNumber) < 2:
-            return [-1,-1]
-        else:
-            a = primeNumber[0]
-            b = primeNumber[1]
-            diff = [b-a,a,b]
-            for i in range(2,len(primeNumber)):
-                if diff[0] <= 2:
-                    return [diff[1],diff[2]]
-                a = b
-                b = primeNumber[i]
-                if b-a < diff[0]:
-                    diff[0] = b-a
-                    diff[1] = a
-                    diff[2] = b
-            return [diff[1],diff[2]]
+            if n <= 3:
+                return True
+            if n % 2 == 0 or n % 3 == 0:
+                return False
+            i = 5
+            while i * i <= n:
+                if n % i == 0 or n % (i + 2) == 0:
+                    return False
+                i += 6
+            return True
         
+        primes = []
+        for num in range(max(2, left), right + 1):
+            if is_prime(num):
+                primes.append(num)
+        
+        if len(primes) < 2:
+            return [-1, -1]
+        
+        min_gap = float('inf')
+        result = [-1, -1]
+        
+        for i in range(1, len(primes)):
+            gap = primes[i] - primes[i-1]
+            if gap < min_gap:
+                min_gap = gap
+                result = [primes[i-1], primes[i]]
+        
+        return result
