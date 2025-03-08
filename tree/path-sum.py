@@ -11,6 +11,7 @@ class Solution(object):
         def roottoleaf(root,psum,targetSum):
             if root.left is None and root.right is None:
                 if sum(psum) == targetSum:
+                    print(psum)
                     return True
                 else:
                     return False
@@ -25,7 +26,4 @@ class Solution(object):
                     return True
                 psum.pop()
             return False
-
-        return roottoleaf(root,[],targetSum)
-
-        
+        return roottoleaf(root,[root.val],targetSum)
