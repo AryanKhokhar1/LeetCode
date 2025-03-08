@@ -4,6 +4,6 @@ class Solution(object):
             return blocks.count("W")
         ans = k
         for i in range(k,len(blocks)):
-            ans = min(ans, blocks.count("W",i-k,i+1))
+            ans = min(ans, blocks.count("W",i-k,i))
         return ans
         
