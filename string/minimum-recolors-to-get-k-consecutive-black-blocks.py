@@ -3,7 +3,7 @@ class Solution(object):
         if k == len(blocks):
             return blocks.count("W")
         ans = k
-        for i in range(k,len(blocks)):
+        for i in range(k,len(blocks)+1):
             ans = min(ans, blocks.count("W",i-k,i))
         return ans
         
