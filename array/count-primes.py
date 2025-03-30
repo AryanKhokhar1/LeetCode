@@ -5,7 +5,8 @@ class Solution(object):
         else:
             lis = [True]*(n)
         
-        for ind in range(2,len(lis)):
+        lis[0] = lis[1] = False
+        for ind in range(2,int(len(lis)**0.5)+1):
             if lis[ind]:
                 i = ind
                 i += ind
