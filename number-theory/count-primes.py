@@ -6,11 +6,8 @@ class Solution(object):
             lis = [True]*(n)
         
         lis[0] = lis[1] = False
-        for ind in range(2,int(len(lis)**0.5)+1):
+        for ind in range(2,int(n**0.5)+1):
             if lis[ind]:
-                i = ind
-                i += ind
-                while(i<len(lis)):
+                for i in range(ind*2, n, ind):
                     lis[i] = False
-                    i+=ind
         return sum(lis)
