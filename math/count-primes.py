@@ -13,9 +13,4 @@ class Solution(object):
                 while(i<len(lis)):
                     lis[i] = False
                     i+=ind
-        answer = 0
-        # print(lis)
-        for val in range(2,len(lis)):
-            if lis[val]:
-                answer += 1
-        return answer
+        return sum(lis)
