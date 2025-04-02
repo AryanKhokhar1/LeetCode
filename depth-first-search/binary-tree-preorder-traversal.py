@@ -1,23 +1,21 @@
 # Definition for a binary tree node.
-# class TreeNode(object):
+# class TreeNode:
 #     def __init__(self, val=0, left=None, right=None):
 #         self.val = val
 #         self.left = left
 #         self.right = right
-class Solution(object):
-    def preorderTraversal(self, root):
-        stack = [root]
-        preorder = []
-        while stack:
-            val = stack.pop()
-            if val is None:
-                continue
-            preorder.append(val.val)
-
-            if val.right:
-                stack.append(val.right)
-            if val.left:
-                stack.append(val.left)
-            
-        return preorder
+class Solution:
+    def preorderTraversal(self, root: Optional[TreeNode]) -> List[int]:
+        if root is None:
+            return []
         
+        stack = [root]
+        answer = []
+        while len(stack) != 0:
+            ele = stack.pop()
+            answer.append(ele.val)
+            if ele.right:
+                stack.append(ele.right)
+            if ele.left:
+                stack.append(ele.left)
+        return answer
