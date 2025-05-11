@@ -6,9 +6,8 @@ class Solution(object):
         num = nums[0]
         for i in range(1,len(nums)):
             if num >= nums[i]:
-                diff = (num+1) - nums[i]
-                ans += diff
-                num = nums[i]+ diff
+                ans += (num+1) - nums[i]
+                num = nums[i]+ ((num+1) - nums[i])
             else:
                 num = nums[i]
         return ans
