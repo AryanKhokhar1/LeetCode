@@ -1,11 +1,16 @@
 class Solution(object):
     def secondHighest(self, s):
-        tempset = set()
+        a = None
+        b = None
         for i in range(len(s)):
             if(s[i].isdigit()):
-                tempset.add(int(s[i]))
-        if len(tempset) < 2:
+                if a == None:
+                    a = int(s[i])
+                elif a < int(s[i]):
+                    b = a
+                    a = int(s[i])
+                elif a > int(s[i]) and a != int(s[i]) and ( b == None or int(s[i]) > b):
+                    b = int(s[i])
+        if b == None:
             return -1
-        lis = list(tempset)
-        lis.sort()
-        return lis[-2]
+        return b
