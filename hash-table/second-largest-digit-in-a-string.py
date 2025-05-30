@@ -4,13 +4,14 @@ class Solution(object):
         b = None
         for i in range(len(s)):
             if(s[i].isdigit()):
+                num = int(s[i])
                 if a == None:
-                    a = int(s[i])
-                elif a < int(s[i]):
+                    a = num
+                elif a < num:
                     b = a
-                    a = int(s[i])
-                elif a > int(s[i]) and a != int(s[i]) and ( b == None or int(s[i]) > b):
-                    b = int(s[i])
+                    a = num
+                elif a > num and a != num and ( b == None or num > b):
+                    b = num
         if b == None:
             return -1
         return b
