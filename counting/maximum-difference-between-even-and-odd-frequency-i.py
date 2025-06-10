@@ -16,6 +16,7 @@ class Solution(object):
                 minevenfreq = min(minevenfreq, val)
             else:
                 maxoddfreq = max(maxoddfreq, val)
-        if (maxoddfreq < maxevenfreq):
+        if (maxoddfreq - maxevenfreq) < (maxoddfreq - minevenfreq):
             return maxoddfreq - minevenfreq
-        return (maxoddfreq - maxevenfreq)
+        else:
+            return (maxoddfreq - maxevenfreq)
