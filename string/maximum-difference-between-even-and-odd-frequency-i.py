@@ -2,6 +2,7 @@ class Solution(object):
     def maxDifference(self, s):
         maxoddfreq = 0
         maxevenfreq = 0
+        minevenfreq = sys.maxint
         frequency = dict()
         for ele in s:
             if frequency.get(ele) == None:
@@ -12,6 +13,9 @@ class Solution(object):
         for val in frequency.values():
             if val % 2 == 0:
                 maxevenfreq = max(maxevenfreq, val)
+                minevenfreq = min(minevenfreq, val)
             else:
                 maxoddfreq = max(maxoddfreq, val)
+        if (maxoddfreq < maxevenfreq):
+            return maxoddfreq - minevenfreq
         return (maxoddfreq - maxevenfreq)
