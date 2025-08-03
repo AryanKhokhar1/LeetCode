@@ -9,6 +9,8 @@ class Solution(object):
             print(same, ", ", ele)
             print(type(same),type(ele))
             print(min(len(ele),len(same)))
+            if ele == "":
+                return ""
             for i in range(min(len(ele),len(same))):
                 print(i)
                 if ele[i] != same[i]:
