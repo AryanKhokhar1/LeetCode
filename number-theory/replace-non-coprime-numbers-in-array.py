@@ -7,16 +7,21 @@ class Solution(object):
         num1, num2 = num2, num1%num2
         return self.findgcd(num1,num2)
     def replaceNonCoprimes(self, nums):
-        stack = nums[:]
-        answer = []
-        while len(stack) > 1:
-            a = stack.pop(0)
-            b = stack.pop(0)
-            val = int(self.lcm(a,b))
-            if val != a*b:
-                stack.insert(0,val)
+        stack = [nums[0]]
+        if len(nums) < 2:
+            return nums
+        i = 1
+        isCop = True
+        while i < len(nums):
+            if isCop or len(stack) == 1:
+                stack.append(nums[i])
+                i += 1
+            lcmVal = int(self.lcm(stack[-1],stack[-2]))
+            if (lcmVal != stack[-1]*stack[-2]):
+                stack.pop()
+                stack.pop()
+                stack.append(lcmVal)
+                isCop = False
             else:
-                answer.append(a)
-                stack.insert(0,b)
-        answer.append(stack.pop())
-        return answer
+                isCop = True
+        return stack
