@@ -16,10 +16,8 @@ class Solution:
                 else:
                     incre = True
                 prev = ele
-                print(incre, ',',ele,end = " - ")
                 if (ele + ele == prefixSum[-1]) and (not incre):
                     answer += 1
-                    print(answer)
             answer = answer + answer
         else:
             incre = True
@@ -30,9 +28,7 @@ class Solution:
                 else:
                     incre = True
                 prev = ele
-                print(incre, ',',ele,end = " - ")
                 if (ele + ele == prefixSum[-1] or ele + ele == prefixSum[-1] + 1 or ele + ele == prefixSum[-1]-1) and (not incre):
                     answer += 1
-                    print(answer)
         
         return answer
