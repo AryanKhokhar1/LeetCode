@@ -6,13 +6,33 @@ class Solution:
         for ele in nums:
             prev += ele
             prefixSum.append(prev)
-        if prefixSum[-1]%2 != 0:
-            return answer
+        # if even both directional
+        if prefixSum[-1] % 2 == 0:
+            incre = True
+            prev = 0
+            for ele in prefixSum:
+                if prev == ele:
+                    incre = False
+                else:
+                    incre = True
+                prev = ele
+                print(incre, ',',ele,end = " - ")
+                if (ele + ele == prefixSum[-1]) and (not incre):
+                    answer += 1
+                    print(answer)
+            answer = answer + answer
         else:
-            half = prefixSum[-1]//2
-
-        for ele in prefixSum:
-            if half == ele:
-                answer += 1
+            incre = True
+            prev = 0
+            for ele in prefixSum:
+                if prev == ele:
+                    incre = False
+                else:
+                    incre = True
+                prev = ele
+                print(incre, ',',ele,end = " - ")
+                if (ele + ele == prefixSum[-1] or ele + ele == prefixSum[-1] + 1 or ele + ele == prefixSum[-1]-1) and (not incre):
+                    answer += 1
+                    print(answer)
         
         return answer
