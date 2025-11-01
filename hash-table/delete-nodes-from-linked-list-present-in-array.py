@@ -8,15 +8,15 @@ class Solution:
         d = dict()
         for ele in nums:
             if d.get(ele) == None:
-                d[ele] = 1
+                d[ele] = True
+        prev = ListNode(0)
+        main = prev
         
-
-        temp = ListNode()
-        ans = temp
-        while head != None:
-            if d.get(head.val) == None:
-                node = ListNode(head.val)
-                temp.next = node
-                temp = temp.next
+        while head!= None:
+            if d.get(head.val):
+                prev.next = head.next
+            else:
+                prev.next = head
+                prev = head
             head = head.next
-        return ans.next
+        return main.next
