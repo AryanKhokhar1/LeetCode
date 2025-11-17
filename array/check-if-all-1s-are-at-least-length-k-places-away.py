@@ -11,7 +11,8 @@ class Solution:
                     answer = min(answer,start)
                     start = 0
             else:
-                start += 1
+                if start != -1:
+                    start += 1
         if answer >= k:
             return True
         else:
