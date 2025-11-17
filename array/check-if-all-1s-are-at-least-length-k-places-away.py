@@ -6,7 +6,7 @@ class Solution:
         for i in range(len(nums)):
             if nums[i] == 1:
                 if start == -1:
-                    start = i
+                    start = 0
                 else:
                     answer = min(answer,start)
                     start = 0
