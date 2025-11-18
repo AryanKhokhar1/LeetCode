@@ -3,6 +3,7 @@ class Solution:
         lis = []
         nums.sort()
         self.binarySearch(nums,0,len(nums)-1,target,lis)
+        lis.sort()
         return lis
     def binarySearch(self,nums,left,right,target,lis):
         if left > right:
