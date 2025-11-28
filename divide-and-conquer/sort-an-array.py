@@ -27,6 +27,6 @@ class Solution:
             newarr.append(left[i])
             i += 1
         while j < len(right):
-            newarrr.append(right[j])
+            newarr.append(right[j])
             j += 1
         return newarr
