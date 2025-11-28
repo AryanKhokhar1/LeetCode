@@ -7,8 +7,8 @@ class Solution:
             return arr
 
         mid = len(arr)//2
-        left = self.divide(arr[:mid])
-        right = self.divide(arr[mid:])
+        left = self.divide(arr[:mid+1])
+        right = self.divide(arr[mid+1:])
         return self.merge(left,right)
     
     def merge(self,left,right):
