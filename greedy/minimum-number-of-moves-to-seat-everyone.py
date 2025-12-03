@@ -4,5 +4,5 @@ class Solution:
         students.sort()
         ans = 0
         for i in range(len(seats)):
-            ans += (max(seats[i],students[i]) - min(seats[i],students[i]))
+            ans += abs(students[i] - seats[i])
         return ans
