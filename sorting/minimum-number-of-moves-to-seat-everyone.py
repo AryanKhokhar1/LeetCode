@@ -14,7 +14,9 @@ class Solution:
         sorted_students = [0]*len(students)
         for i in range(len(seats)):
             fseats = count_seats[seats[i]] -1
+            count_seats[seats[i]] -= 1
             fstudents = count_students[students[i]] -1
+            count_students[students[i]] -= 1
             sorted_seats[fseats] = seats[i]
             sorted_students[fstudents] = students[i]
         ans = 0 
