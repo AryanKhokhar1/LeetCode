@@ -1,15 +1,13 @@
 class Solution:
     def minimumSubarrayLength(self, nums: List[int], k: int) -> int:
-        if k == 0:
-            return 1
         i = 0
         j = 0
         ans = 100
         while j <= len(nums):
             sub = nums[i:j]
-            bor = 0
+            bor = -1
             if len(sub) == 0:
-                bor = 0
+                bor = -1
             elif len(sub) == 1:
                 bor = sub[0]
             else:
