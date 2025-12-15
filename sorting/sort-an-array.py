@@ -1,32 +1,31 @@
 class Solution:
     def sortArray(self, nums: List[int]) -> List[int]:
-        return self.divide(nums)
-    
-    def divide(self,arr):
-        if len(arr) == 1:
-            return arr
+        if not nums:
+            return nums
+        
+        neg = [-x for x in nums if x < 0]
+        pos = [x for x in nums if x >= 0]
 
-        mid = len(arr)//2
-        left = self.divide(arr[:mid])
-        right = self.divide(arr[mid:])
-        return self.merge(left,right)
-    
-    def merge(self,left,right):
-        newarr = []
+        neg = self.radixsort(neg)
+        pos = self.radixsort(pos)
 
-        i = 0
-        j = 0
-        while i < len(left) and j < len(right):
-            if left[i] < right[j]:
-                newarr.append(left[i])
-                i+=1
-            else:
-                newarr.append(right[j])
-                j+=1
-        while i<len(left):
-            newarr.append(left[i])
-            i += 1
-        while j < len(right):
-            newarr.append(right[j])
-            j += 1
-        return newarr
+        neg = [-x for x in neg]
+        neg = list(reversed(neg))
+        return neg+pos
+    def radixsort(self,lis):
+        if not lis:
+            return lis
+        max_element = max(lis)
+        ndigit = len(str(max_element))
+
+        for n in range(ndigit):
+            bucket = [[],[],[],[],[],[],[],[],[],[]]
+            for ele in lis:
+                focusdigit = (ele//(10**n))%10
+                bucket[focusdigit].append(ele)
+            
+            new_lis = []
+            for b in bucket:
+                new_lis.extend(b)
+            lis = new_lis
+        return lis
