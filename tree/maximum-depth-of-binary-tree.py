@@ -6,10 +6,10 @@
 #         self.right = right
 class Solution(object):
     def maxDepth(self, root):
-        if root is None:
-            return 0
-        
-        a = self.maxDepth(root.left)
-        b = self.maxDepth(root.right)
+        if root is None: return 0
 
-        return 1 + max(a,b)
+        l = self.maxDepth(root.left)
+        r = self.maxDepth(root.right)
+
+        return 1 + max(l,r)
+        
