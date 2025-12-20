@@ -1,15 +1,14 @@
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
-        # with help of extra array
-        arr = [0]*len(nums)
+        # with the help of two pointer approach
         i,j = 0,1
-        for index in range(len(nums)):
-            if nums[index] < 0:
-                # negative
-                arr[j] = nums[index]
+        while i < len(nums):
+            if nums[i] >= 0:
+                i += 2
+            elif nums[j] < 0:
                 j += 2
             else:
-                # positive
-                arr[i] = nums[index]
-                i +=2
-        return arr
+                nums[i],nums[j] = nums[j],nums[i]
+                i+=2
+                j+=2
+        return nums
