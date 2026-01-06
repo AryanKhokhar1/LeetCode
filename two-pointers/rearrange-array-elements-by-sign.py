@@ -1,15 +1,13 @@
 class Solution:
     def rearrangeArray(self, nums: List[int]) -> List[int]:
         # with the help of two pointer approach
-        i = 0
-        j = 1
-        ans = [0]*len(nums)
-        for ele in nums:
-            if ele > 0:
-                ans[i] = ele
+        i, j = 0,1
+        while i < len(nums):
+            if nums[i] > 0:
                 i +=2
-            elif ele < 0:
-                ans[j] = ele
+            elif nums[j] < 0:
                 j += 2
-        return ans 
+            else:
+                nums[i],nums[j] = nums[j],nums[i]
+        return nums
     
