@@ -3,11 +3,6 @@ class Solution:
         """
         Do not return anything, modify nums in-place instead.
         """
-        d = dict()
-        l = len(nums)
-        for index, value in enumerate(nums):
-            d[index] = value
-        for i in range(len(nums)):
-            nums[(i+k)%l] = d[i]
-        
-        
+        k = k % len(nums)
+        if k != 0:
+            nums[:-k], nums[-k:] = nums[-k:], nums[:-k]
